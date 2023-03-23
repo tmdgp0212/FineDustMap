@@ -10,7 +10,7 @@ export const Nav = styled.div`
   background-color: #fff;
   border-radius: 15px 15px 0 0;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+  z-index: 1;
 
   a {
     display: flex;

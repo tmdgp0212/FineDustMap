@@ -24,5 +24,5 @@ export const CityList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding: 10px 20px 70px;
+  margin: 60px 20px 70px;
 `;
