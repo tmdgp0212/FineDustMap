@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const AllCities = styled.div`
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px 20px;
   height: inherit;
 
   &::-webkit-scrollbar {
@@ -18,11 +22,4 @@ export const AllCities = styled.div`
   &::-webkit-scrollbar-track {
     background-color: transparent;
   }
-`;
-
-export const CityList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin: 60px 20px 70px;
 `;

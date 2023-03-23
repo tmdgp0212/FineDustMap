@@ -56,7 +56,7 @@ function Header() {
             <option value={"세종"}>세종</option>
           </select>
 
-          {location.pathname === "/all" && (
+          {location.pathname === "/" && (
             <select>
               {districts &&
                 districts.map((dist, idx) => (

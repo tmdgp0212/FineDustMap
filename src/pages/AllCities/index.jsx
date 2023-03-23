@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import DustCard from "../../components/DustCard";
+import Loading from "../../components/Loading";
 import * as S from "./style";
 
 function AllCities() {
@@ -9,13 +10,12 @@ function AllCities() {
     entities: cities,
   } = useSelector((state) => state.dust);
 
+  if (loading) return <Loading />;
   return (
     <S.AllCities>
-      <S.CityList>
-        {cities.map((city, idx) => (
-          <DustCard key={idx} dustData={city} />
-        ))}
-      </S.CityList>
+      {cities.map((city, idx) => (
+        <DustCard key={idx} dustData={city} />
+      ))}
     </S.AllCities>
   );
 }

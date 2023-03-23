@@ -4,12 +4,10 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
+  flex-shrink: 0;
   padding: 0 20px;
   width: 100%;
-  height: 50px;
+  height: 60px;
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   z-index: 1;

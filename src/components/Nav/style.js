@@ -2,15 +2,14 @@ import styled from "styled-components";
 
 export const Nav = styled.div`
   display: flex;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  flex-shrink: 0;
   width: 100%;
-  height: 60px;
+  height: 65px;
   background-color: #fff;
   border-radius: 15px 15px 0 0;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
+  opacity: 0.5;
 
   a {
     display: flex;

@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export const Layout = styled.div`
   overflow: hidden;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 360px;
   height: 640px;
   background-color: #fff;
