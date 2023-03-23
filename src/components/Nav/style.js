@@ -21,11 +21,10 @@ export const Nav = styled.div`
     transition: all 0.2s;
 
     & + a {
-      border-left: 1px solid var(--light-gray);
+      border-left: 1px solid var(--gray-light);
     }
 
     &:hover {
-      /* background-color: #70a1ff; */
       box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
     }
 
@@ -33,7 +32,7 @@ export const Nav = styled.div`
       width: 22px;
       height: 22px;
       padding: 5px 0 2px;
-      color: var(--blue);
+      color: var(--blue-light);
     }
 
     span {

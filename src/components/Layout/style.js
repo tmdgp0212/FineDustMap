@@ -10,11 +10,11 @@ export const Layout = styled.div`
 
   @media (max-width: 420px) {
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     border-radius: 0px;
   }
 
-  @media (max-height: 660px) {
+  @media (min-width: 420px) and (max-height: 660px) {
     height: 90vh;
     min-height: 420px;
   }

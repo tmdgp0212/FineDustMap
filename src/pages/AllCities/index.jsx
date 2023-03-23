@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import DustCard from "../../components/DustCard";
 import { getDustData } from "../../store/dustReducer/dust";
 import * as S from "./style";
 
@@ -22,9 +23,11 @@ function AllCities() {
 
   return (
     <S.AllCities>
-      {cities.map((city, idx) => (
-        <div key={idx}>{city.stationName}</div>
-      ))}
+      <S.CityList>
+        {cities.map((city, idx) => (
+          <DustCard key={idx} dustData={city} />
+        ))}
+      </S.CityList>
     </S.AllCities>
   );
 }

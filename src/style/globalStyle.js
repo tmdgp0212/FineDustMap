@@ -1,18 +1,27 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 
 :root {
 	//https://flatuicolors.com/palette/cn
-	--light-gray: #f1f2f6;
-	--gray: #ced6e0;
-	--blue: #5352ed;
-	--vivid-blue: #3742fa;
-	--light-blue: #70a1ff;
-	--green: #2ed573;
-	--yellow: #ffa502;
-	--orange: #ff6348;
-	--red: #ff4757;
+	--gray: #808e9b;
+	--gray-light: #f1f2f6;
+	--blue-light: #5352ed;
+	--green-light: #0be881;
+	--yellow-light: #ffdd59;
+	--orange-light: #ffc048;
+	--red-light: #ff5e57;
+	--blue: #3c40c6;
+	--green: #05c46b;
+	--yellow: #f7b731;
+	--orange: #fa8231;
+	--red: #ff3f34;
 }
 
 
@@ -35,6 +44,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -48,7 +58,8 @@ body {
 	width: 100vw;
 	min-height: 100vh;
 	color: #222;
-	line-height: 1.4;
+	font-family: 'Pretendard-Regular';
+	line-height: 1.2;
 	background-color: #5352ed;
 }
 ol, ul {

@@ -19,3 +19,10 @@ export const AllCities = styled.div`
     background-color: transparent;
   }
 `;
+
+export const CityList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px 20px 70px;
+`;
