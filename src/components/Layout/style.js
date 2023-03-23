@@ -1,3 +1,21 @@
 import styled from "styled-components";
 
-export const Layout = styled.div``;
+export const Layout = styled.div`
+  position: relative;
+  width: 360px;
+  height: 640px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 420px) {
+    width: 100vw;
+    height: 90vh;
+    border-radius: 0px;
+  }
+
+  @media (max-height: 660px) {
+    height: 90vh;
+    min-height: 420px;
+  }
+`;
