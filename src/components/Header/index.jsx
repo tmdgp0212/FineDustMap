@@ -1,23 +1,52 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import {
+  changeCityAll,
+  changeMydist,
+} from "../../store/bookmarkReducer/bookmark";
 import { getDustData } from "../../store/dustReducer/dust";
 import * as S from "./style";
 
 function Header() {
-  const {
-    loading,
-    error,
-    entities: cities,
-  } = useSelector((state) => state.dust);
-  const [city, setCity] = useState("서울");
-  const [districts, setDistricts] = useState();
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const changeCity = (e) => {
+  const { entities: cities } = useSelector((state) => state.dust);
+  const { myCity, myDistrict, cityAll } = useSelector(
+    (state) => state.bookmark
+  );
+  const [city, setCity] = useState(
+    location.pathname === "/" ? myCity : cityAll
+  );
+  const [district, setDistrict] = useState(myDistrict);
+  const [districts, setDistricts] = useState();
+
+  const changeCity = async (e) => {
     setCity(e.target.value);
+    if (location.pathname === "/all") {
+      dispatch(changeCityAll({ city: e.target.value }));
+    } else if (location.pathname === "/") {
+      setDistrict("none");
+    }
   };
+
+  const changeDistrict = (e) => {
+    setDistrict(e.target.value);
+    dispatch(changeMydist({ myCity: city, myDistrict: e.target.value }));
+  };
+
+  useEffect(() => {
+    setCity(location.pathname === "/" ? myCity : cityAll);
+  }, [location]);
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      dispatch(getDustData(myCity));
+    } else if (location.pathname === "/all") {
+      dispatch(getDustData(cityAll));
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(getDustData(city));
@@ -37,7 +66,7 @@ function Header() {
       </div>
       {location.pathname !== "/bookmark" && (
         <div className="options">
-          <select onChange={changeCity}>
+          <select onChange={changeCity} value={city}>
             <option value={"서울"}>서울</option>
             <option value={"부산"}>부산</option>
             <option value={"대구"}>대구</option>
@@ -57,7 +86,8 @@ function Header() {
           </select>
 
           {location.pathname === "/" && (
-            <select>
+            <select onChange={changeDistrict} value={district}>
+              <option value="none">선택해주세요</option>
               {districts &&
                 districts.map((dist, idx) => (
                   <option key={idx} value={dist}>

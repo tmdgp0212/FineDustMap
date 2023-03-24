@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import dustReducer from "./dustReducer/dust";
+import bookmarkReducer from "./bookmarkReducer/bookmark";
 
 const rootReducer = combineReducers({
   dust: dustReducer,
+  bookmark: bookmarkReducer,
 });
 
 const store = configureStore({
