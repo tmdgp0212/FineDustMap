@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { result } from "lodash";
 
 const initialState = {
   entities: {
@@ -54,8 +53,6 @@ export const getBookmarkData = createAsyncThunk(
       );
 
       arr.push(result);
-      console.log(result);
-      console.log(arr);
     }
     return arr;
   }
@@ -64,14 +61,7 @@ export const getBookmarkData = createAsyncThunk(
 const dust = createSlice({
   name: "dust",
   initialState,
-  reducers: {
-    setBookmark: (state, action) => {
-      state.entities.bookmarkData = [
-        ...state.entities.bookmarkData,
-        action.payload,
-      ];
-    },
-  },
+  reducers: {},
   extraReducers: {
     [getDustData.pending]: (state) => {
       state.loading = true;
@@ -87,12 +77,11 @@ const dust = createSlice({
       state.error = true;
     },
     [getBookmarkData.pending]: (state) => {
+      state.entities.bookmarkData = [];
       state.loading = true;
       state.error = false;
     },
     [getBookmarkData.fulfilled]: (state, action) => {
-      console.log(action);
-      console.log("action");
       state.entities.bookmarkData = action.payload;
       state.loading = false;
       state.error = false;

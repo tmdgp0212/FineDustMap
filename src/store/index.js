@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import dustReducer from "./dustReducer/dust";
-import bookmarkReducer from "./bookmarkReducer/bookmark";
+import dustReducer from "./dustReducer/dust.js";
+import bookmarkReducer from "./bookmarkReducer/bookmark.js";
 
 const rootReducer = combineReducers({
   dust: dustReducer,

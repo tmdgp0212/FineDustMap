@@ -1,8 +1,8 @@
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import Router from "./router/Router";
-import store from "./store";
-import GlobalStyle from "./style/GlobalStyle";
+import Router from "./router/Router.jsx";
+import store from "./store/index.js";
+import GlobalStyle from "./style/GlobalStyle.js";
 
 function App() {
   return (
