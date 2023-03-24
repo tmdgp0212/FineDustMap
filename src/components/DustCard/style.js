@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const DustCard = styled.div`
+  position: relative;
   padding: 10px 15px;
   width: 100%;
   border-radius: 5px;
@@ -33,7 +34,7 @@ export const DustCard = styled.div`
       padding: 12px;
       width: 50%;
       color: var(--${({ grade }) => grade});
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 600;
       text-align: center;
       background-color: rgba(255, 255, 255, 0.6);
@@ -45,5 +46,18 @@ export const DustCard = styled.div`
     color: #333;
     text-align: right;
     font-size: 12px;
+  }
+
+  .bookmark {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+
+    svg {
+      width: 28px;
+      height: 28px;
+      color: #fff;
+    }
   }
 `;

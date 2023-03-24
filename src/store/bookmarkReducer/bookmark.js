@@ -20,9 +20,19 @@ const bookmark = createSlice({
       ...state,
       cityAll: action.payload.city,
     }),
-    addBookmark: (state, action) => [...state, action.payload.bookmark],
+    addBookmark: (state, action) => ({
+      ...state,
+      bookmark: [...state.bookmark, action.payload.bookmark],
+    }),
+    removeBookmark: (state, action) => ({
+      ...state,
+      bookmark: state.bookmark.filter(
+        (item) => item !== action.payload.bookmark
+      ),
+    }),
   },
 });
 
-export const { changeMydist, changeCityAll, addBookmark } = bookmark.actions;
+export const { changeMydist, changeCityAll, addBookmark, removeBookmark } =
+  bookmark.actions;
 export default bookmark.reducer;
