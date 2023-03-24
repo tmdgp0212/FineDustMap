@@ -5,17 +5,14 @@ import DustCard from "../components/DustCard";
 import Loading from "../components/Loading";
 
 function MyCity() {
-  const {
-    loading,
-    error,
-    entities: cities,
-  } = useSelector((state) => state.dust);
+  const { loading, error, entities } = useSelector((state) => state.dust);
+  const { citiesData } = entities;
   const { myDistrict } = useSelector((state) => state.bookmark);
   const [savedMyCity, setSavedMyCity] = useState();
 
   useEffect(() => {
-    setSavedMyCity(cities.find((city) => city.stationName === myDistrict));
-  }, [myDistrict, cities]);
+    setSavedMyCity(citiesData.find((city) => city.stationName === myDistrict));
+  }, [myDistrict, citiesData]);
 
   if (loading) return <Loading />;
   if (error) return <>Error! 다시 시도해주세요</>;

@@ -31,7 +31,8 @@ function Header() {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const { entities: cities } = useSelector((state) => state.dust);
+  const { entities } = useSelector((state) => state.dust);
+  const { citiesData } = entities;
   const { myCity, myDistrict, cityAll } = useSelector(
     (state) => state.bookmark
   );
@@ -75,8 +76,8 @@ function Header() {
   }, [location]);
 
   useEffect(() => {
-    setDistricts(cities.map((city) => city.stationName));
-  }, [cities]);
+    setDistricts(citiesData.map((city) => city.stationName));
+  }, [citiesData]);
 
   return (
     <S.Header>
