@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import DustCard from "../../components/DustCard";
-import Loading from "../../components/Loading";
-import { CardsContainer } from "../../style/CardContainer";
+import DustCard from "../components/DustCard";
+import Loading from "../components/Loading";
+import { CardsContainer } from "../style/CardContainer";
 
 function AllCities() {
   const {

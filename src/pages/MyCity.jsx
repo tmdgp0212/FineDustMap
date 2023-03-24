@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { CardsContainer } from "../../style/CardContainer";
-import DustCard from "../../components/DustCard";
-import Loading from "../../components/Loading";
+import { CardsContainer } from "../style/CardContainer";
+import DustCard from "../components/DustCard";
+import Loading from "../components/Loading";
 
 function MyCity() {
   const {
@@ -15,7 +15,6 @@ function MyCity() {
 
   useEffect(() => {
     setSavedMyCity(cities.find((city) => city.stationName === myDistrict));
-    console.log(savedMyCity);
   }, [myDistrict, cities]);
 
   if (loading) return <Loading />;

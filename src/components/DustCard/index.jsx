@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { MdBookmarkBorder, MdBookmark } from "react-icons/md";
 import * as S from "./style";
 
 function DustCard({ dustData }) {

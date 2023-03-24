@@ -8,6 +8,25 @@ import {
 import { getDustData } from "../../store/dustReducer/dust";
 import * as S from "./style";
 
+const cityArr = [
+  "서울",
+  "부산",
+  "대구",
+  "인천",
+  "광주",
+  "대전",
+  "울산",
+  "경기",
+  "충북",
+  "충남",
+  "전북",
+  "전남",
+  "경북",
+  "경남",
+  "제주",
+  "세종",
+];
+
 function Header() {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -16,41 +35,44 @@ function Header() {
   const { myCity, myDistrict, cityAll } = useSelector(
     (state) => state.bookmark
   );
-  const [city, setCity] = useState(
-    location.pathname === "/" ? myCity : cityAll
-  );
+  const [cityAllOpt, setCityAllOpt] = useState(cityAll);
+  const [myCityOpt, setMyCityOpt] = useState(myCity);
   const [district, setDistrict] = useState(myDistrict);
   const [districts, setDistricts] = useState();
 
-  const changeCity = async (e) => {
-    setCity(e.target.value);
-    if (location.pathname === "/all") {
-      dispatch(changeCityAll({ city: e.target.value }));
-    } else if (location.pathname === "/") {
-      setDistrict("none");
-    }
+  const changeCityAllInput = (e) => {
+    const value = e.target.value;
+    setCityAllOpt(value);
+    dispatch(getDustData(value));
+    dispatch(changeCityAll({ city: value }));
+  };
+
+  const changeMyCityInput = (e) => {
+    const value = e.target.value;
+    setMyCityOpt(value);
+    dispatch(getDustData(value));
   };
 
   const changeDistrict = (e) => {
     setDistrict(e.target.value);
-    dispatch(changeMydist({ myCity: city, myDistrict: e.target.value }));
+    dispatch(changeMydist({ myCity: myCityOpt, myDistrict: e.target.value }));
   };
 
-  useEffect(() => {
-    setCity(location.pathname === "/" ? myCity : cityAll);
-  }, [location]);
-
-  useEffect(() => {
+  const loadData = () => {
     if (location.pathname === "/") {
       dispatch(getDustData(myCity));
     } else if (location.pathname === "/all") {
       dispatch(getDustData(cityAll));
     }
+  };
+
+  useEffect(() => {
+    loadData();
   }, []);
 
   useEffect(() => {
-    dispatch(getDustData(city));
-  }, [city]);
+    loadData();
+  }, [location]);
 
   useEffect(() => {
     setDistricts(cities.map((city) => city.stationName));
@@ -64,28 +86,26 @@ function Header() {
           <img src="assets/dust.png" alt="" />
         </div>
       </div>
-      {location.pathname !== "/bookmark" && (
-        <div className="options">
-          <select onChange={changeCity} value={city}>
-            <option value={"서울"}>서울</option>
-            <option value={"부산"}>부산</option>
-            <option value={"대구"}>대구</option>
-            <option value={"인천"}>인천</option>
-            <option value={"광주"}>광주</option>
-            <option value={"대전"}>대전</option>
-            <option value={"울산"}>울산</option>
-            <option value={"경기"}>경기</option>
-            <option value={"충북"}>충북</option>
-            <option value={"충남"}>충남</option>
-            <option value={"전북"}>전북</option>
-            <option value={"전남"}>전남</option>
-            <option value={"경북"}>경북</option>
-            <option value={"경남"}>경남</option>
-            <option value={"제주"}>제주</option>
-            <option value={"세종"}>세종</option>
+      <div className="options">
+        {location.pathname === "/all" && (
+          <select onChange={changeCityAllInput} value={cityAllOpt}>
+            {cityArr.map((city, idx) => (
+              <option key={idx} value={city}>
+                {city}
+              </option>
+            ))}
           </select>
+        )}
 
-          {location.pathname === "/" && (
+        {location.pathname === "/" && (
+          <>
+            <select onChange={changeMyCityInput} value={myCityOpt}>
+              {cityArr.map((city, idx) => (
+                <option key={idx} value={city}>
+                  {city}
+                </option>
+              ))}
+            </select>
             <select onChange={changeDistrict} value={district}>
               <option value="none">선택해주세요</option>
               {districts &&
@@ -95,9 +115,9 @@ function Header() {
                   </option>
                 ))}
             </select>
-          )}
-        </div>
-      )}
+          </>
+        )}
+      </div>
     </S.Header>
   );
 }
