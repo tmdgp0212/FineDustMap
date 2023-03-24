@@ -22,4 +22,11 @@ export const CardsContainer = styled.div`
   &::-webkit-scrollbar-track {
     background-color: transparent;
   }
+
+  .msg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
 `;

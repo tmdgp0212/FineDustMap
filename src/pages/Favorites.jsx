@@ -17,15 +17,14 @@ function Favorites() {
     }
   }, []);
 
-  useEffect(() => {
-    console.log(bookmarkData);
-  }, [bookmarkData]);
-
   if (loading) return <Loading />;
   return (
     <CardsContainer>
-      {bookmarkData &&
-        bookmarkData.map((city, idx) => <DustCard key={idx} dustData={city} />)}
+      {bookmarkData.length > 0 ? (
+        bookmarkData.map((city, idx) => <DustCard key={idx} dustData={city} />)
+      ) : (
+        <p className="msg">즐겨찾기가 없습니다</p>
+      )}
     </CardsContainer>
   );
 }

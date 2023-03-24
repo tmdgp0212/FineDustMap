@@ -15,13 +15,13 @@ function MyCity() {
   }, [myDistrict, citiesData]);
 
   if (loading) return <Loading />;
-  if (error) return <>Error! 다시 시도해주세요</>;
+  if (error) return <p className="msg">Error! 다시 시도해주세요</p>;
   return (
     <CardsContainer>
       {savedMyCity ? (
         <DustCard dustData={savedMyCity} />
       ) : (
-        <>지역을 선택해주세요</>
+        <p className="msg">지역을 선택해주세요</p>
       )}
     </CardsContainer>
   );
