@@ -12,8 +12,7 @@ const initialState = {
 
 const getParameters = (city) => {
   return {
-    serviceKey:
-      "A+zIqxrKlXuKprsFurGTd/fNW+qEfUFK+bloQg22eqhtEBh73PGd2v3jMMz44U/odqLtRtDXNlmstF+Aw+BQFw==",
+    serviceKey: import.meta.env.VITE_API_KEY,
     returnType: "json",
     numOfRows: "100",
     pageNo: "1",
@@ -28,7 +27,7 @@ export const getDustData = createAsyncThunk(
     const Parameters = getParameters(city);
 
     const res = await axios.get(
-      "/api/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty",
+      "https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty",
       { params: Parameters }
     );
     return res.data.response.body.items;
@@ -44,7 +43,7 @@ export const getBookmarkData = createAsyncThunk(
     for (const bookmark of bookmarkList) {
       const Parameters = getParameters(bookmark.sidoName);
       const res = await axios.get(
-        "/api/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty",
+        "https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty",
         { params: Parameters }
       );
 

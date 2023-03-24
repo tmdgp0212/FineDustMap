@@ -8,7 +8,7 @@ function AllCities() {
   const { citiesData } = entities;
 
   if (loading) return <Loading />;
-  if (error) return <>Error! 다시 시도해주세요</>;
+  if (error) return <p className="msg">Error! 다시 시도해주세요</p>;
   return (
     <CardsContainer>
       {citiesData.map((city, idx) => (
