@@ -37,21 +37,32 @@ export const getDustData = createAsyncThunk(
 export const getBookmarkData = createAsyncThunk(
   "dust/getBookmarkData",
   async (bookmarkList) => {
+    const cities = [];
     const arr = [];
-    let result;
 
     for (const bookmark of bookmarkList) {
-      const Parameters = getParameters(bookmark.sidoName);
+      if (!cities.includes(bookmark.sidoName)) {
+        cities.push(bookmark.sidoName);
+      }
+    }
+    console.log(cities);
+
+    for (const city of cities) {
+      const Parameters = getParameters(city);
       const res = await axios.get(
         "/api/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty",
         { params: Parameters }
       );
 
-      result = res.data.response.body.items.find(
-        (data) => data.stationName === bookmark.stationName
-      );
-
-      arr.push(result);
+      res.data.response.body.items.map((data) => {
+        if (
+          bookmarkList.some(
+            (bookmark) => data.stationName === bookmark.stationName
+          )
+        ) {
+          arr.push(data);
+        }
+      });
     }
     return arr;
   }

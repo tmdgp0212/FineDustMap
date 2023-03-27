@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import {
   changeCityAll,
   changeMydist,
+  getSavedData,
 } from "../../store/bookmarkReducer/bookmark";
 import { getDustData } from "../../store/dustReducer/dust";
 import * as S from "./style";
@@ -68,6 +69,7 @@ function Header() {
   };
 
   useEffect(() => {
+    // dispatch(getSavedData());
     loadData();
   }, []);
 
