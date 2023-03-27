@@ -45,7 +45,6 @@ export const getBookmarkData = createAsyncThunk(
         cities.push(bookmark.sidoName);
       }
     }
-    console.log(cities);
 
     for (const city of cities) {
       const Parameters = getParameters(city);

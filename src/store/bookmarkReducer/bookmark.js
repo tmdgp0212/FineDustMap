@@ -1,20 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  myCity: "서울",
-  myDistrict: "중구",
-  cityAll: "서울",
+let initialState = {
+  myCity: "",
+  myDistrict: "",
+  cityAll: "",
   bookmark: [],
 };
+
+if (initialState.myCity === "") {
+  const savedData = JSON.parse(localStorage.getItem("states"));
+  if (savedData) {
+    initialState = { ...savedData };
+  } else {
+    initialState = {
+      myCity: "서울",
+      myDistrict: "중구",
+      cityAll: "서울",
+      bookmark: [],
+    };
+  }
+}
 
 const bookmark = createSlice({
   name: "bookmark",
   initialState,
   reducers: {
-    getSavedData: () => {
-      const savedData = JSON.parse(localStorage.getItem("states"));
-      return savedData;
-    },
     changeMydist: (state, action) => {
       const newState = {
         ...state,
@@ -53,11 +63,6 @@ const bookmark = createSlice({
   },
 });
 
-export const {
-  getSavedData,
-  changeMydist,
-  changeCityAll,
-  addBookmark,
-  removeBookmark,
-} = bookmark.actions;
+export const { changeMydist, changeCityAll, addBookmark, removeBookmark } =
+  bookmark.actions;
 export default bookmark.reducer;
