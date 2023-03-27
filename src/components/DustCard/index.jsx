@@ -72,8 +72,8 @@ function DustCard({ dustData }) {
       </div>
       <div className="result">
         <div className="grade">{dustGrade(dustData).gradeStr}</div>
-        <p>미세먼지 농도 : {dustData.pm10Value}㎍/㎥</p>
-        <p>오존 농도 : {dustData.o3Value}㎍/㎥</p>
+        <p>미세먼지 : {dustData.pm10Value}㎍/㎥</p>
+        <p>초미세먼지 : {dustData.pm25Value}㎍/㎥</p>
       </div>
       <p className="data-time">{dustData.dataTime} 기준</p>
       <div className="bookmark" onClick={onClick}>
