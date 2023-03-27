@@ -89,25 +89,25 @@ function Header() {
       </div>
       <div className="options">
         {location.pathname === "/all" && (
-          <select onChange={changeCityAllInput} value={cityAllOpt}>
+          <S.SelectCity onChange={changeCityAllInput} value={cityAllOpt}>
             {cityArr.map((city, idx) => (
               <option key={idx} value={city}>
                 {city}
               </option>
             ))}
-          </select>
+          </S.SelectCity>
         )}
 
         {location.pathname === "/" && (
           <>
-            <select onChange={changeMyCityInput} value={myCityOpt}>
+            <S.SelectCity onChange={changeMyCityInput} value={myCityOpt}>
               {cityArr.map((city, idx) => (
                 <option key={idx} value={city}>
                   {city}
                 </option>
               ))}
-            </select>
-            <select onChange={changeDistrict} value={district}>
+            </S.SelectCity>
+            <S.CelectyDist onChange={changeDistrict} value={district}>
               <option value="none">선택해주세요</option>
               {districts &&
                 districts.map((dist, idx) => (
@@ -115,7 +115,7 @@ function Header() {
                     {dist}
                   </option>
                 ))}
-            </select>
+            </S.CelectyDist>
           </>
         )}
       </div>

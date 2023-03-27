@@ -20,6 +20,11 @@ export const Header = styled.div`
       width: 32px;
       height: 32px;
 
+      @media (max-width: 300px) {
+        width: 26px;
+        height: 26px;
+      }
+
       img {
         display: block;
         width: 100%;
@@ -29,15 +34,26 @@ export const Header = styled.div`
     h1 {
       font-size: 16px;
       font-weight: 600;
-    }
-  }
 
-  .options {
-    select {
-      width: 60px;
-      & + select {
-        margin-left: 10px;
+      @media (max-width: 300px) {
+        display: none;
       }
     }
   }
+`;
+
+export const SelectCity = styled.select`
+  padding: 2px 4px;
+  width: 60px;
+  border: none;
+  outline: none;
+  /* border-bottom: 1px solid #333; */
+`;
+
+export const CelectyDist = styled(SelectCity)`
+  margin-left: 10px;
+  width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
