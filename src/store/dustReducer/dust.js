@@ -27,7 +27,7 @@ export const getDustData = createAsyncThunk(
     const Parameters = getParameters(city);
 
     const res = await axios.get(
-      "https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty",
+      "api/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty",
       { params: Parameters }
     );
     return res.data.response.body.items;
@@ -43,7 +43,7 @@ export const getBookmarkData = createAsyncThunk(
     for (const bookmark of bookmarkList) {
       const Parameters = getParameters(bookmark.sidoName);
       const res = await axios.get(
-        "https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty",
+        "api/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty",
         { params: Parameters }
       );
 

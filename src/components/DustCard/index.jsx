@@ -31,6 +31,8 @@ function DustCard({ dustData }) {
   const [isBookmark, setIsBookmark] = useState(false);
 
   const onClick = () => {
+    console.log(isBookmark);
+    setIsBookmark(!isBookmark);
     if (!isBookmark) {
       dispatch(
         addBookmark({
@@ -50,7 +52,6 @@ function DustCard({ dustData }) {
         })
       );
     }
-    setIsBookmark(!isBookmark);
   };
 
   useEffect(() => {
