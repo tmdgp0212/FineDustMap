@@ -1,4 +1,4 @@
-# Find Dust Map💨
+# FineDust Map💨
 
 오픈 API를 활용한 각 시도별 미세먼지 데이터를 검색할 수 있는 미세먼지 알리미 앱
 
