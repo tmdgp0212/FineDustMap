@@ -12,10 +12,8 @@ function Favorites() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (bookmark.length > 0) {
-      dispatch(getBookmarkData(bookmark));
-    }
-  }, []);
+    dispatch(getBookmarkData(bookmark));
+  }, [bookmark]);
 
   if (loading) return <Loading />;
   return (

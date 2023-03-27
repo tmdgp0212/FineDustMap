@@ -37,6 +37,7 @@ export const getDustData = createAsyncThunk(
 export const getBookmarkData = createAsyncThunk(
   "dust/getBookmarkData",
   async (bookmarkList) => {
+    console.log(bookmarkList);
     const arr = [];
     let result;
 

@@ -31,7 +31,6 @@ function DustCard({ dustData }) {
   const [isBookmark, setIsBookmark] = useState(false);
 
   const onClick = () => {
-    console.log(isBookmark);
     setIsBookmark(!isBookmark);
     if (!isBookmark) {
       dispatch(
@@ -63,7 +62,7 @@ function DustCard({ dustData }) {
         setIsBookmark(true);
       }
     });
-  }, [bookmark]);
+  }, []);
 
   return (
     <S.DustCard grade={dustGrade(dustData).gradeNum}>

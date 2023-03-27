@@ -27,7 +27,7 @@ const bookmark = createSlice({
     removeBookmark: (state, action) => ({
       ...state,
       bookmark: state.bookmark.filter(
-        (item) => item !== action.payload.bookmark
+        (item) => item.stationName !== action.payload.bookmark.stationName
       ),
     }),
   },
