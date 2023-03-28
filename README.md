@@ -2,7 +2,7 @@
 
 오픈 API를 활용한 각 시도별 미세먼지 데이터를 검색할 수 있는 미세먼지 알리미 앱
 
-- 데모사이트 : [DEMO](https://whimsical-sfogliatella-62bbe0.netlify.app/bookmark)
+- 데모사이트 : [DEMO](https://whimsical-sfogliatella-62bbe0.netlify.app/)
 - 작업기간 : 총 3일
 - 작업인원 : 1인
 - 사용언어 : `React`
